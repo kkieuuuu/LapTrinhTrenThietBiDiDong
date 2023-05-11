@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <!-- Google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <!-- main css  -->
+    <link rel="stylesheet" href="./CSS/main.css">
+    <title>Lập trình Trên Thiết Bị Di Động</title>
+    
+</head>
+<style>
+    body {
+      font-family: Arial;
+      margin: 0;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    img {
+      vertical-align: middle;
+    }
+    
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+      position: relative;
+    }
+    
+    /* Hide the images by default */
+    .mySlides {
+      display: none;
+    }
+    
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+      cursor: pointer;
+    }
+    
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+    
+    /* Container for image text */
+    .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+    }
+    
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* Six columns side by side */
+    .column {
+      float: left;
+      width: 16.66%;
+    }
+    
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+      opacity: 0.6;
+    }
+    
+    .active,
+    .demo:hover {
+      opacity: 1;
+    }
+    </style>
+<body> 
+    <!-- overlay -->
+    <section id="overlay"></section>
+    <!-- Header  -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <!-- logo   -->
+                <div class="navbar__logo">
+                    <img src="./IMG/4.JPG" alt="Website logo">
+                </div>
+                <!-- Links  -->
+                <ul class="navbar__links">
+                    <li class="navbar__link"><a href="#Projects">Project</a></li>
+                    <li class="navbar__link"><a href="#thing">About</a></li>
+                    <li class="navbar__link"><a href="#banner">Resume</a></li>
+                    <a href="#footer"><button class="navbar__btn">Contact</button></a>
+                </ul>
+                <!-- Menu   -->
+                <div class="navbar__icons">
+                    <div class="navbar__icon">
+
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+
+    <!-- banner -->
+   
+       
+        <div class="container" style="position: relative; left: 0px; top: 200px;">
+            <div class="mySlides">
+              <div class="numbertext">1 / 3</div>
+              <img src="./IMG/Proj1.jpg" style="width:100%">
+            </div>
+          
+            <div class="mySlides">
+              <div class="numbertext">2 / 3</div>
+              <img src="./IMG/Proj2.jpg" style="width:100%">
+            </div>
+          
+            <div class="mySlides">
+              <div class="numbertext">3 / 3</div>
+              <img src="./IMG/Proj3.jpg" style="width:100%">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+          
+            <div class="caption-container">
+              <p id="caption"></p>
+            </div>
+          
+            <div class="row" style="position: relative; left: 15px;">
+              <div class="column">
+                <img class="demo cursor" src="./IMG/Proj1.jpg" style="width:100%" onclick="currentSlide(1)" alt="BÁO CÁO">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="./IMG/Proj2.jpg" style="width:100%" onclick="currentSlide(2)" alt="">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="./IMG/Proj3.jpg" style="width:100%" onclick="currentSlide(3)" alt="">
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <script>
+          let slideIndex = 1;
+          showSlides(slideIndex);
+          
+          function plusSlides(n) {
+            showSlides(slideIndex += n);
+          }
+          
+          function currentSlide(n) {
+            showSlides(slideIndex = n);
+          }
+          
+          function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
+          }
+          </script>
+              
+    <!-- Footer -->
+    <footer id="footer">
+        <!-- IMG -->
+        <div class="footer__img">
+            <img src="./IMG/1.jpg"  style="width:30%; height: 40%; position: relative; left: 60px; top:400px" >
+        </div>
+        <!-- Heading -->
+        <div class="footer__heading">
+            <h1>&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp  &nbsp  &nbsp  &nbsp CONTACT ME  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp </h1>
+            <div class="footer__heading--contact">
+                <a href="tel:0339317215">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>0339317215</p>
+                </a>
+                <a href="mailto:nguyenthikimkieu31032002@gmail.com">
+                    <i class="fa-solid fa-envelopes-bulk"></i>
+                    <p>nguyenthikimkieu31032002@gmail.com</p>
+                </a>
+            </div>
+            <div class="footer__socials">
+                <a href="https://www.facebook.com/kkieuuuu.313/" id=""><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/ky2w_nee/" id=""><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer__dec">
+            <img src="./IMG/5.png" alt="">
+        </div>
+    </footer>
+    <!-- Font awesome  -->
+    <script src="https://kit.fontawesome.com/efd2a71cbd.js" crossorigin="anonymous"></script>
+    <!-- main js  -->
+    <script src="./JS/main.js"></script>
+</body>
+</html>
